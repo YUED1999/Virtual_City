@@ -1,0 +1,13 @@
+手順1 地図点データに対してDelete_Error.cppを実行。NMD.datが生成。
+手順2 Judge_GorB.cppを実行。地面点データMapdataG.datと建物点データMapdataB.datが生成。
+手順3 MapdataG.datとMapdataB.datそれぞれに対してDelete_Points.cppを実行。MapdataG.datに
+　　　実行するとMapdataGL.dat、MapdataB.datに実行するとMapdataBL.datが生成される。
+手順4 Add_label.cppを実行。この際地面データMapdataGL.datに対して実行する場合は
+　　　Add_label.cppの43行目をofs << x << " " << y << " " << points.at(j).at(i) << " " << 1 << "\n";とし、
+　　　MapdataBL.datに対して実行する場合はofs << x << " " << y << " " << points.at(j).at(i) << " " << 2 << "\n";と書き換える必要有り。
+　　　実行するとMapdataGL.datに対してはMapdataGLl.datが、MapdataBL.datに対してはMapdataBLl.datが生成される。
+手順5 MapdataGLl.datとMapdataBLl.datを統合し、そのデータに対してAdd_Base.cppを実行。MapdataBGLla.datが生成。
+手順6 MapdataBGLla.datに対しDelaunay.pyを実行。Korakuen_NamikiClub2.wrlが生成。
+
+手順2～手順5について
+プログラムを実行する際にプログラム内の入力ファイルの名前と出力ファイルの名称を変更する必要有り。
